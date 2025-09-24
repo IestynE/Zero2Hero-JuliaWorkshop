@@ -128,3 +128,8 @@
 # "positional" arguments, to the left of the semicolon, are defined in order.
 # "named" arguments, to the right of the semicolon, are only defined by name; never by order.
 # arguments can be assigned "default" values.
+
+## By convention, functions ending in ! mutate any mutable inputs.
+# take x = [9,4,7]
+# sort(x) returns a sorted x vector, but leaves x unchanged
+# sort!(x) returns and changes x.
