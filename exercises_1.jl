@@ -39,3 +39,46 @@ function hamming(code1, code2)
     count(pair -> pair[1] != pair[2] , zip(code1,code2))
 end
 
+
+############################### Plotting exercises ##################
+### Taylor expansion of sine
+fig = Figure()
+x = range(-π,π,length=20)
+lines(x, sin ; label = "sin")
+lines!(x, y -> y;label = "1st Order")
+lines!(x, y -> y - (y^3)/6 ; label = "3rd Order")
+lines!(x, y -> y - (y^3)/6 + (y^5)/120 ; label = "5th Order")
+axislegend()
+current_figure()
+
+### Semi-transparent Histogram
+using Random: Xoshiro
+rng = Xoshiro(1234)
+xp1 = 0.2randn(rng, 10_000) .+ 0.5
+p2 = 0.5randn(rng, 10_000)
+edges = -2:0.1:2;
+hist(xp1; bins = edges, color = ("black",0.75), label = "p1")
+hist!(p2; bins = edges, color = ("red",0.75), label = "p2")
+ylims!(0,nothing)
+axislegend()
+current_figure()
+
+### Cool spiral
+fig = Figure(resolution = (600,600))
+
+Box(fig[1, 1:2]; color = "yellow", strokewidth = 0)
+Box(fig[1:2, 3]; color = "tomato", strokewidth = 0)
+Box(fig[2:3, 1]; color = "green", strokewidth = 0)
+Box(fig[2, 2]; color = "blue", strokewidth = 0)
+Box(fig[3, 2:3]; color = "pink", strokewidth = 0)
+
+ax = Axis(fig[:,:])
+n = 4
+t = 0:0.01:2n*π
+x = (2n*π .- t) .* cos.(t)
+y = (2n*π .- t) .* sin.(t)
+lines!(x,y;color = "black",linewidth = 5)
+
+hidespines!(ax)
+hidedecorations!(ax)
+fig

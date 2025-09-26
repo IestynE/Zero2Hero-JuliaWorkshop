@@ -133,3 +133,51 @@
 # take x = [9,4,7]
 # sort(x) returns a sorted x vector, but leaves x unchanged
 # sort!(x) returns and changes x.
+
+
+########################## Packages ###########
+# We may want to import packages for use with julia, e.g.
+
+# import Pkg
+# Then when we want to use a function from a package, we must preface it with Pkg.
+# Pkg.function(vars)
+
+# We must first activate packages at the notebook we are using:
+# Pkg.activate(@__DIR__)
+
+# Pkg.status() tells us what packages are active.
+
+# When using a package, we may say "using (packagename)", which brings the packages functions fully into scope.
+
+
+############################ PLOTTING!!!! ################
+# We first update size and layout for easier visualisation; update_theme!(size = (500, 300), fontsize = 16)
+
+# plotting functions like lines, scatter etc. always initialise a bunch of things.
+# fig,ax, plot_object = lines(x,y) generates 3 things; a figure object, an axis object, and another object.
+
+# to update a plot, we must use the "in place"/"mutating" version of the function; such as scatter! , lines! ... just the ! after.
+# all of these functions have named variables (with defaults) that can be changed... color, linewidth, markersize etc.
+
+# ax4 = fig[1,4] = Axis(fig;
+    # This is the way to adjust axis properties during creation:
+    #title = "wow!",
+    #xlabel = "much axis",
+    #ylabel = "why left empty?"
+#)
+#fig
+
+
+# Axes can be defined by a "matrix" position system. We can even use ranges here to define an entire row or column, or proportions.
+# ax4.xticks and ax4.xlabel define axis labels, and similarly for y.
+
+#x = range(0, 10; length = 20)
+#lines(x, sin; label = "sin")  # makes a figure
+#scatter!(x, cos; label = "cos", color = "purple") # uses last-used figure
+#current_figure() # return (and hence display) last-used figure
+
+#axislegend() # first argument is the axis to use. Defaults to last-used axis.
+#current_figure()
+
+# We can also use the legend function to place it seperately; we define the legend position, relevant figures, and labels.
+#Legend(fig[1:2, 2], [li1, sc2], ["ημίτονο", "cosinus"])
